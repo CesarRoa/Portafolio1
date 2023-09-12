@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
+import Render from './Components/Render';
 
 const App = () => {
     const [data, setData] = useState(null);
@@ -31,11 +33,43 @@ const App = () => {
     if (error) return <p>Error: {error.message}</p>;
 
     return (
-        <div>
-            {/* Render your data here */}
-            <pre>{JSON.stringify(data, null, 2)}</pre>
-        </div>
+        <Div>
+            <div>
+                <Render data = {data}/>
+                {/* Render your data here */}
+            </div>
+
+            <div>
+                <pre>{JSON.stringify(data, null, 2)}</pre>
+            </div>
+        </Div>
     );
 }
 
 export default App;
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  & > div {
+    border: 1px solid red;
+    width: 100%;
+    height: calc(50vh);
+    display: flex;
+
+    // First child: Render Component
+    &:first-child {
+      overflow-x: auto; // Horizontal scroll only for Render component
+    }
+
+    // Second child: the JSON pre
+    &:last-child {
+      overflow-x: hidden; // Ensures no horizontal scroll for this div
+    }
+  }
+`;
