@@ -11,11 +11,10 @@ const App = () => {
     useEffect(() => {
         const options = {
             method: 'GET',
-            url: 'https://footapi7.p.rapidapi.com/api/rankings/uefa/countries',
+            url: 'https://footapi7.p.rapidapi.com/api/rankings/uefa/clubs',
             headers: {
                 'X-RapidAPI-Key': '056d2999cemshb3444f3c853b8a3p1ed62cjsn076f8982e203',
-                'X-RapidAPI-Host': 'footapi7.p.rapidapi.com'
-            }
+                'X-RapidAPI-Host': 'footapi7.p.rapidapi.com'            }
         };
 
         axios.request(options)
